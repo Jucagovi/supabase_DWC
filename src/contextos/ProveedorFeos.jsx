@@ -9,6 +9,7 @@ const ProveedorFeos = ({ children }) => {
   const arrayInicial = [];
   const cadenaCargando = "Cargando datos...";
   const cadenaInicial = "";
+  const booleanInicial = false;
   const valoresInicialesFeo = {
     name: "",
     phone: "",
@@ -47,16 +48,6 @@ const ProveedorFeos = ({ children }) => {
         .from("Feos")
         .select("*")
         .eq("id", id);
-      /**
-       * El objeto data es un array que contiene un objeto con los
-       * datos por cada ocurrencia de la búsqueda. En este caso
-       * sólo puede ser una ya que se ha filtrado por "id".
-       */
-      //console.log(data);
-      /**
-       * Al estado, por tanto, se le debe asignar la primera (y única)
-       * posición de ese array.
-       */
       setFeo(data[0]);
     } catch (fallo) {
       setSituacion(fallo.message);
@@ -82,11 +73,6 @@ const ProveedorFeos = ({ children }) => {
       const respuesta = await supabaseConexion.from("Feos").insert(feo);
       console.log(respuesta);
       setFeo(valoresInicialesFeo);
-      /**
-       * Se actualiza el estado compartido "listadofeos", de ese
-       * modo el resto de componentes que lo utilicen tendrán
-       * una versión actualizada.
-       */
       setListadoFeos([...listadoFeos, feo]);
     } catch (error) {
       setError(error.message);
@@ -101,34 +87,43 @@ const ProveedorFeos = ({ children }) => {
         .update(feo)
         .eq("id", feo.id);
 
-      /**
-       * Si se lanza la consulta sin "id" se trata de un error,
-       * pero no salta el catch ya que la comunicación se ha
-       * producido con éxito. Para casos así se dispone del
-       * objeto "error". Si éste contiene datos, lanzamos el
-       * error y se activa el catch.
-       */
       if (error) throw error;
 
-      /**
-       * Si todo ha ido bien, se actualizan los datos en el estado
-       * "listadoFeos" para que aparezcan los cambios en pantalla.
-       * Hay dos posibilidades: volver a pedir los datos al servidor
-       * (poco eficiente), o actualizar el estado (más eficiente).
-       * Todo dependerá del tipo de datos y aplicación que se esté
-       * programando. Ambas posibilidades son asumibles.
-       * Además, al compartir estado, esta tarea también hay que realizarla
-       * en la función "crearFeo".
-       * */
-
-      // Se crea un nuevo array con los cambios del formulario.
       const feosCambiados = listadoFeos.map((feoAntiguo) => {
         return feoAntiguo.id === feo.id ? feo : feoAntiguo;
       });
-      // Se actualiza el estado con los nuevos datos.
       setListadoFeos(feosCambiados);
-      // Se borra el formulario tras el cambio.
       setFeo(valoresInicialesFeo);
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  /**
+   * Función para borrar un registro de la
+   * base de datos.
+   */
+  const borrarFeo = async (id) => {
+    // Se intenta borrar el elemento.
+    try {
+      const { data, error } = await supabaseConexion
+        .from("Feos")
+        .delete()
+        .eq("id", id);
+
+      /**
+       * Si todo ha ido bien, se actualiza el estado del contexto.
+       * Para ello se recorre el estado "listadoFeos" y se
+       * devuelven todos los objetos cuyo "id" sea diferente
+       * al que se ha eliminado.
+       */
+      const feosFiltrados = listadoFeos.filter((feo) => {
+        if (feo.id !== id) {
+          return feo;
+        }
+      });
+      // Se actualiza el estado.
+      setListadoFeos(feosFiltrados);
     } catch (error) {
       setError(error.message);
     }
@@ -151,6 +146,7 @@ const ProveedorFeos = ({ children }) => {
     crearFeo,
     actualizarFeo,
     obtenerFeo,
+    borrarFeo,
   };
 
   return (

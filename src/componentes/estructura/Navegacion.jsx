@@ -18,6 +18,9 @@ const Navegacion = () => {
         <Link className='enlace' to='/actualizacion'>
           Actualización
         </Link>
+        <Link className='enlace' to='/borrado'>
+          Borrado
+        </Link>
       </nav>
     </Fragment>
   );

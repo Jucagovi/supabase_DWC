@@ -5,6 +5,7 @@ import Error from "../../../paginas/Error.jsx";
 import Listado from "../../../paginas/Listado.jsx";
 import Creacion from "../../../paginas/Creacion.jsx";
 import Actualizacion from "../../../paginas/Actualizacion.jsx";
+import Borrado from "../../../paginas/Borrado.jsx";
 
 const Rutas = () => {
   return (
@@ -14,6 +15,7 @@ const Rutas = () => {
         <Route path='listado' element={<Listado />} />
         <Route path='creacion' element={<Creacion />} />
         <Route path='actualizacion' element={<Actualizacion />} />
+        <Route path='borrado' element={<Borrado />} />
         <Route path='*' element={<Error />} />
       </Routes>
     </Fragment>
