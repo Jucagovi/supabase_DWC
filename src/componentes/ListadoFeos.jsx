@@ -25,7 +25,16 @@ const ListadoFeos = ({ borrado }) => {
           // Si se ha elegido la opción de "borrado=true"...
           if (borrado) {
             if (e.target.classList.contains("feo")) {
-              // Se confirma la acción de borrado.
+              /**
+               * Se confirma la acción de borrado.
+               *
+               * Evidentemente esto no se realiza de este modo, sino a través
+               * de una ventana modal que gestiona un estado booleano "confirmar"
+               * que indica si se ha de borrar o no.
+               *
+               * Incluso utilizando una biblioteca de componentes como
+               * Material-UI, React Bootstrap, Next-UI entre otras.
+               */
               const aceptado = confirm(
                 `¿Desea borrar al feo ${e.target.innerHTML}?`
               );
