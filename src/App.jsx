@@ -1,35 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { Fragment } from "react";
+import "./App.css";
+import Cabecera from "./componentes/estructura/Cabecera.jsx";
+import ProveedorFeos from "./contextos/ProveedorFeos.jsx";
+import Navegacion from "./componentes/estructura/Navegacion.jsx";
+import Principal from "./componentes/estructura/Principal.jsx";
+import Pie from "./componentes/estructura/Pie.jsx";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Fragment>
+      <BrowserRouter>
+        <main>
+          <Cabecera />
+          <Navegacion />
+          <Principal />
+          <Pie />
+        </main>
+      </BrowserRouter>
+    </Fragment>
+  );
 }
 
-export default App
+export default App;

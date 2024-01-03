@@ -1,0 +1,15 @@
+.enlace {
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    min-width: 100px;
+    height: 40px;
+    background-color: white;
+    margin-right: 10px;
+    color: black;
+}
+
+.enlace:hover {
+    background-color: rgb(216, 214, 214);
+    color: white;
+} 
