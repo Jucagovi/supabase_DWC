@@ -9,9 +9,6 @@ const Navegacion = () => {
         <Link className='enlace' to='/'>
           Inicio
         </Link>
-        <Link className='enlace' to='/listado'>
-          Listado
-        </Link>
       </nav>
     </Fragment>
   );
