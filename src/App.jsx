@@ -11,12 +11,14 @@ function App() {
   return (
     <Fragment>
       <BrowserRouter>
-        <main>
-          <Cabecera />
-          <Navegacion />
-          <Principal />
-          <Pie />
-        </main>
+        <ProveedorFeos>
+          <main>
+            <Cabecera />
+            <Navegacion />
+            <Principal />
+            <Pie />
+          </main>
+        </ProveedorFeos>
       </BrowserRouter>
     </Fragment>
   );

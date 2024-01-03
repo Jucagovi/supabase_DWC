@@ -12,6 +12,9 @@ const Navegacion = () => {
         <Link className='enlace' to='/listado'>
           Listado
         </Link>
+        <Link className='enlace' to='/creacion'>
+          Creación
+        </Link>
       </nav>
     </Fragment>
   );
