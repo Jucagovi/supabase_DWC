@@ -1,0 +1,10 @@
+#act{
+    display: flex;
+}
+
+#act-listado, #act-formulario{
+    border: 1px solid white;
+    padding: 15px;
+    margin: 10px;
+    min-width: 400px;
+}
