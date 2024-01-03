@@ -1,0 +1,8 @@
+.feo {
+    text-align: left;
+}
+
+.feo:hover {
+    color: red;
+    cursor: pointer;
+}
