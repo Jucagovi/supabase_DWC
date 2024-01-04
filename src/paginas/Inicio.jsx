@@ -33,7 +33,6 @@ const Inicio = () => {
         <li>git checkout actualizacion</li>
         <li>git checkout borrado</li>
         <li>git checkout autentificacion</li>
-        <li>git checkout consultaAvanzada</li>
       </ol>
     </Fragment>
   );
