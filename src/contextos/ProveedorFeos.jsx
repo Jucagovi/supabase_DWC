@@ -42,6 +42,38 @@ const ProveedorFeos = ({ children }) => {
     }
   };
 
+  /**
+   * Función para filtrar el listado de "feos"
+   * usando el operador eq().
+   */
+  const filtrarFeos = async () => {
+    try {
+      const { data, error } = await supabaseConexion
+        .from("Feos")
+        .select("*")
+        .eq("country", "Burkina Faso");
+      setListadoFeos(data);
+    } catch (fallo) {
+      setSituacion(fallo.message);
+    }
+  };
+
+  /**
+   * Función para ordenar el listado de "feos"
+   * usando la cláusula order.
+   */
+  const ordenarFeos = async (orden) => {
+    try {
+      const { data, error } = await supabaseConexion
+        .from("Feos")
+        .select("*")
+        .order("name", { ascending: orden });
+      setListadoFeos(data);
+    } catch (fallo) {
+      setSituacion(fallo.message);
+    }
+  };
+
   /** useEffect con las tareas a realizar en la carga del documento. */
   useEffect(() => {
     obtenerListadoSencillo();
@@ -50,7 +82,13 @@ const ProveedorFeos = ({ children }) => {
   /**
    * Objeto con la información a exportar
    */
-  const datosAExportar = { listadoFeos, situacion };
+  const datosAExportar = {
+    listadoFeos,
+    situacion,
+    obtenerListadoSencillo,
+    filtrarFeos,
+    ordenarFeos,
+  };
 
   return (
     <ContextoFeos.Provider value={datosAExportar}>
