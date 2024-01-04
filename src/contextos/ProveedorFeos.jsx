@@ -23,7 +23,7 @@ const ProveedorFeos = ({ children }) => {
   const objetoInicial = {};
   const arrayInicial = [];
   const cadenaCargando = "Cargando datos...";
-  //const cadenaInicial = "";
+  const cadenaInicial = "";
 
   /** Estados para proveer. */
   const [listadoFeos, setListado] = useState(arrayInicial);
