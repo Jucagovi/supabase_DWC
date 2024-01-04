@@ -26,7 +26,7 @@ const ProveedorFeos = ({ children }) => {
   const cadenaInicial = "";
 
   /** Estados para proveer. */
-  const [listadoFeos, setListado] = useState(arrayInicial);
+  const [listadoFeos, setListadoFeos] = useState(arrayInicial);
   const [situacion, setSituacion] = useState(cadenaCargando);
 
   /**
@@ -36,7 +36,7 @@ const ProveedorFeos = ({ children }) => {
   const obtenerListadoSencillo = async () => {
     try {
       const { data, error } = await supabaseConexion.from("Feos").select("*");
-      setListado(data);
+      setListadoFeos(data);
     } catch (fallo) {
       setSituacion(fallo.message);
     }
