@@ -27,7 +27,7 @@ const Inicio = () => {
         con los siguientes comandos en el terminal:
       </p>
       <ol start='0'>
-        <li>git checkout main (estado inicial)</li>
+        <li>git checkout main</li>
         <li>git checkout consulta</li>
         <li>git checkout creacion</li>
         <li>git checkout actualizacion</li>
