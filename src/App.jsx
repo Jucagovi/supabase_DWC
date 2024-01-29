@@ -6,19 +6,23 @@ import Navegacion from "./componentes/estructura/Navegacion.jsx";
 import Principal from "./componentes/estructura/Principal.jsx";
 import Pie from "./componentes/estructura/Pie.jsx";
 import { BrowserRouter } from "react-router-dom";
+import Login from "./paginas/Login.jsx";
+import ProveedorUsuarios from "./contextos/ProveedorUsuarios.jsx";
 
 function App() {
   return (
     <Fragment>
       <BrowserRouter>
-        <ProveedorFeos>
+        <ProveedorUsuarios>
           <main>
             <Cabecera />
             <Navegacion />
-            <Principal />
+            <ProveedorFeos>
+              <Principal />
+            </ProveedorFeos>
             <Pie />
           </main>
-        </ProveedorFeos>
+        </ProveedorUsuarios>
       </BrowserRouter>
     </Fragment>
   );
