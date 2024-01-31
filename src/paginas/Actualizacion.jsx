@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import "./Actualizacion.css";
-import ListadoFeos from "../componentes/LIstadoFeos.jsx";
+import ListadoFeos from "../componentes/ListadoFeos.jsx";
 import FormularioFeo from "../componentes/FormularioFeo.jsx";
 
 const Actualizacion = () => {
